@@ -1,34 +1,31 @@
-import javax.xml.transform.Source;
-
-/**
- * 冒泡排序
- */
-
-public class BubbleSort {
+public class SelectionSort {
     public static void main(String[] args) {
         int[] arrs = {1, 3, 5, 7, 9, 2, 4, 6, 8};
 
         //排序之前数组遍历
         show(arrs);
 
-        //冒泡排序
-        bubbleSort(arrs);
+        //选择排序
+        selectionSort(arrs);
 
         //排序之后数组遍历
         show(arrs);
     }
 
-    //冒泡排序
-    //算法分析:最佳情况:T(n) = O(n) 最差情况:T(n) = O(n2) 平均情况:T(n) = O(n2)
-    private static void bubbleSort(int[] arrs) {
-        for (int i = 1; i < arrs.length; i++) {
-            for (int m = 0; m < arrs.length - i; m++) {
-                if (arrs[m] > arrs[m + 1]) {
-                    int max = arrs[m];
-                    arrs[m] = arrs[m + 1];
-                    arrs[m + 1] = max;
+    //选择排序
+    private static void selectionSort(int[] arrs) {
+        for (int i = 0; i < arrs.length; i++) {
+            int minIndex = i;
+            for (int m = i + 1; m < arrs.length; m++) {
+                if (arrs[m] < arrs[minIndex]) {
+                    //记录最小的index
+                    minIndex = m;
                 }
             }
+            //交换当前元素和最小元素
+            int min = arrs[minIndex];
+            arrs[minIndex] = arrs[i];
+            arrs[i] = min;
         }
     }
 
