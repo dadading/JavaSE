@@ -1,7 +1,7 @@
 import java.io.*;
-import java.util.Arrays;
 
 /**
+ * 字节流
  * FileInputStream 基础字节输入流
  * FileOutputStream 基础字节输出流
  */
@@ -37,6 +37,10 @@ public class FileInputStreamDemo {
 //            }
 //            System.out.println();
 //        }
+
+        byte[] by2 = new byte[(int)f1.length()];//以字节为单位表示文件的长度
+        fis.read(by2);
+        System.out.println(new String(by2));
         System.out.println("----------");
 
         //3-按单个字节复制文件
@@ -47,11 +51,11 @@ public class FileInputStreamDemo {
         System.out.println("----------");
 
         //4-按字节数组写入文件
-        byte[] by = new byte[1024];
-        int len = 0;
-        while ((len = fis.read(by)) != -1) {
-            fos.write(by, 0, len);
-        }
+//        byte[] by = new byte[1024];
+//        int len = 0;
+//        while ((len = fis.read(by)) != -1) {
+//            fos.write(by, 0, len);
+//        }
         System.out.println("----------");
 
 

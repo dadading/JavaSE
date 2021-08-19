@@ -1,6 +1,7 @@
 import java.io.*;
 
 /**
+ * 字节缓冲流
  * BufferedInputStream 高效字节输入流
  * BufferedOutputStream 高效字节输出流
  */
@@ -37,19 +38,22 @@ public class BufferedInputStreamDemo {
         System.out.println("----------");
 
         //3-单个字节复制文件
-//        int a=0;
-//        while((a=bis.read())!=-1){
-//            bos.write(a);
-//        }
+        int a=0;
+        while((a=bis.read())!=-1){
+            bos.write(a);
+        }
         System.out.println("----------");
 
         //4-字节数组复制文件
-        byte[] by = new byte[1024];
-        int len = 0;
-        while ((len = bis.read(by)) != -1) {
-            bos.write(by, 0, len);
-        }
+//        byte[] by = new byte[1024];
+//        int len = 0;
+//        while ((len = bis.read(by)) != -1) {
+//            bos.write(by, 0, len);
+//        }
         System.out.println("----------");
+
+        //清空缓存
+        bos.flush();
 
         //关闭数据流
         bis.close();
