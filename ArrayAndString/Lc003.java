@@ -34,24 +34,32 @@ import java.util.List;
 
 public class Lc003 {
     public int[][] merge(int[][] intervals) {
+        //创建数组集合存放区间数据
         List<int[]> list = new ArrayList<int[]>();
-        if(intervals.length == 0){
+        if (intervals.length == 0) {
             return new int[0][2];
         }
+
         // 按区间开始位置排序
         Arrays.sort(intervals, new Comparator<int[]>() {
-            public int compare(int[] i1, int[] i2){
-                return i1[0] - i2[0];
+            public int compare(int[] o1, int[] o2) {
+                //按左边界+右边界组合排序
+                int a = o1[0] - o2[0];
+                int b = a == 0 ? o1[1] - o2[1] : a;
+                return b;
             }
         });
 
         // 遍历区间列表
-        for(int i = 0; i < intervals.length; i++){
-            int left = intervals[i][0], right = intervals[i][1];
-            if(i == 0 || list.get(list.size() - 1)[1] < left){
+        for (int i = 0; i < intervals.length; i++) {
+            int left = intervals[i][0];
+            int right = intervals[i][1];
+            //若是第一组区间直接加入集合中,或者当前区间左边界大于集合内部最后一个区间的右边界也是把当前区间直接插入集合
+            if (i == 0 || list.get(list.size() - 1)[1] < left) {
                 list.add(new int[]{left, right});
-            }else {
-                // 确定区间右边界
+            }
+            //其余情况都是将当前区间右边界赋值和集合内部最后一个区间的右边界中的大值赋给集合最后一个区间的右边界
+            else {
                 list.get(list.size() - 1)[1] = Math.max(list.get(list.size() - 1)[1], right);
             }
         }
@@ -59,16 +67,36 @@ public class Lc003 {
         return list.toArray(new int[list.size()][]);
     }
 
+    public void show(int[][] arrs) {
+        for (int i = 0; i < arrs.length; i++) {
+            if (i == arrs.length - 1) {
+                System.out.println(Arrays.toString(arrs[i]));
+            } else {
+                System.out.print(Arrays.toString(arrs[i]) + "  ");
+            }
+        }
+    }
+
 
     public static void main(String[] args) {
-        int[][] arrs = {{1, 3}, {2, 6}, {8, 10}, {15, 18}};
+        int[][] arrs = {{1, 3}, {2, 6}, {8, 10}, {15, 18}, {2, 4}, {9, 10}};
 
         //思路
-        for (int i = 0; i < arrs.length; i++) {
-            for (int m = 0; m < arrs[i].length; m++) {
-                System.out.print(arrs[i][m] + " ");
+        //按区间开头进行排序
+        Arrays.sort(arrs, new Comparator<int[]>() {
+            public int compare(int[] o1, int[] o2) {
+                //按左边界+右边界组合排序
+                int a = o1[0] - o2[0];
+                int b = a == 0 ? o1[1] - o2[1] : a;
+                return b;
             }
-            System.out.println("");
-        }
+        });
+
+        //测试
+        Lc003 lc003 = new Lc003();
+
+        lc003.show(arrs);
+        lc003.show(lc003.merge(arrs));
+
     }
 }

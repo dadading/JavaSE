@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
 
 public class Test {
     public static void main(String[] args) {
@@ -25,5 +26,7 @@ public class Test {
         for (int i = 0; i < arrs2.length; i++) {
             System.out.println(arrs2[i]);
         }
+
+        HashSet<String> hs = new HashSet<String>();
     }
 }
