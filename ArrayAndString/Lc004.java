@@ -56,11 +56,13 @@ public class Lc004 {
         show(arrs);
 
         //正对角反转
-        Lc004 lc004 = new Lc004();
-        lc004.diagonalReverse(arrs);
+//        Lc004 lc004 = new Lc004();
+//        lc004.diagonalReverse(arrs);
 
-        //数组遍历
-        System.out.println("正对角反转后:");
+        //斜对角反转
+        Lc004 lc004 = new Lc004();
+        lc004.oppositeDiagonalReverse(arrs);
+        System.out.println("斜对角反转:");
         show(arrs);
     }
 
@@ -87,11 +89,26 @@ public class Lc004 {
         }
     }
 
+
     //正对角反转
+    //1 2 3   转换后 9 6 3
+    //4 5 6         8 5 2
+    //7 8 9         7 4 1
+    public static void diagonalReverse(int[][] arrs) {
+        for(int i=0;i<arrs.length-1;i++){
+            for(int m=0;m<arrs[i].length-1-i;m++){
+                int tmp = arrs[i][m];
+                arrs[i][m] = arrs[arrs.length-1-i][arrs.length-1-i];
+            }
+        }
+
+    }
+
+    //斜对角反转
     //1 2 3     转换后 1 4 7
     //4 5 6           2 5 8
     //7 8 9           3 6 9
-    public static void diagonalReverse(int[][] arrs) {
+    public static void oppositeDiagonalReverse(int[][] arrs) {
         for (int i = 0; i < arrs.length; i++) {
             for (int m = 0; m < arrs.length; m++) {
                 int tmp = arrs[i][m];
@@ -99,11 +116,6 @@ public class Lc004 {
                 arrs[m][i] = tmp;
             }
         }
-    }
-
-    //斜对角反转
-    public static void oppositeDiagonalReverse(int[][] arrs) {
-
     }
 
     //上下反转
