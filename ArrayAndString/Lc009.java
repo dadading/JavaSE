@@ -1,4 +1,6 @@
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 /**
  * 翻转字符串里的单词
@@ -69,6 +71,15 @@ public class Lc009 {
             }
         }
         return result;
+    }
+
+    public String reverseWords2(String s) {
+        //去除开头和结尾的空格
+        s = s.trim();
+        //正则匹配连续的空格作为分隔符
+        List<String> wordlist = Arrays.asList(s.split(" +"));
+        Collections.reverse(wordlist);
+        return String.join(" ",wordlist);
     }
 
     public static void main(String[] args) {

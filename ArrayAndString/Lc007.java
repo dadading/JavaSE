@@ -36,6 +36,11 @@
  * 链接：https://leetcode-cn.com/leetbook/read/array-and-string/ceda1/
  * 来源：力扣（LeetCode）
  * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+ *
+ *
+ * add by dinggunayi 20210826
+ * 方法1、方法2、方法3学习完成于20210825
+ * 方法4未学习
  */
 
 public class Lc007 {
