@@ -167,6 +167,7 @@ public class MyLinkedList {
             //先把尾部节点切换
             tail = nowNode;
 
+            //while循环条件为什么不能使用(nextNode != null):初始化的nextNode就是null,不能作为这个条件
             while (nowNode != null) {
                 nextNode = nowNode.next;
 
